@@ -1,4 +1,6 @@
-export default function Pagination({ page, setPage, maxPage }) {
+import Props1 from "./PaginationTypes";
+
+export default function Pagination({ page, setPage, maxPage }: Props1) {
   return (
     <div className="flex justify-center py-10">
       <button
@@ -13,7 +15,7 @@ export default function Pagination({ page, setPage, maxPage }) {
       <button
         disabled={page === maxPage}
         onClick={() => {
-          setPage((page) => page + 1);
+          setPage((page: number) => page + 1);
         }}
         className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
       >
