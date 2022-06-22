@@ -1,6 +1,12 @@
-import Props1 from "./PaginationTypes";
+import { Dispatch, FC, SetStateAction } from "react";
 
-export default function Pagination({ page, setPage, maxPage }: Props1) {
+interface IPagination {
+  page: number;
+  setPage: Dispatch<SetStateAction<number>>;
+  maxPage: number | null;
+}
+
+const Pagination: FC<IPagination> = ({ page, setPage, maxPage }) => {
   return (
     <div className="flex justify-center py-10">
       <button
@@ -23,4 +29,6 @@ export default function Pagination({ page, setPage, maxPage }: Props1) {
       </button>
     </div>
   );
-}
+};
+
+export default Pagination;

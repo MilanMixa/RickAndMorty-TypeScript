@@ -1,24 +1,19 @@
 import useSingleCharacterRoute from "./useSingleCharacterRoute";
 import { useParams } from "react-router-dom";
 import AsyncWrapper from "../../hoc/AsyncList/AsyncList";
+import useSingleCharacter from "../../components/SingleCharacter/useSingleCharacter";
 
 export default function SingleCharacterRoute() {
   const { id } = useParams();
   const { singleCharacter, singleCharacterStatus } =
     useSingleCharacterRoute(id);
-  console.log(singleCharacterStatus);
 
   // name, status, species, origin.name, location.name, image
-  const colors = {
-    Alive: "bg-green-500",
-    Dead: "bg-red-500",
-    unknown: "bg-gray-500",
-  };
+
+  const { colors } = useSingleCharacter;
 
   return (
     <AsyncWrapper status={singleCharacterStatus}>
-      {/* <div className="text-white">{singleCharacter && singleCharacter.name}</div> */}
-      {/* <div>{singleCharacter?.name}</div>*/}
       <div className="text-white bg-gray-400 mt-[10vh] xl:flex w-2/4 mx-auto xl:mt-[20vh] rounded-2xl overflow-hidden">
         <div className="m-5 xl:w-1/3 xl:m-10">
           <img

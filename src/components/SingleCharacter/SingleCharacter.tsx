@@ -1,18 +1,26 @@
+import { FC } from "react";
 import { Link } from "react-router-dom";
+import { CharacterStatusEnum } from "../../api/characters/types";
+import useSingleCharacter from "./useSingleCharacter";
 
-export default function SingleCharacter({
+interface ISingleCharacter {
+  image: string;
+  name: string;
+  status: CharacterStatusEnum;
+  species: string;
+  location: { name: string; url: string };
+  id: number;
+}
+
+const SingleCharacter: FC<ISingleCharacter> = ({
   image,
   name,
   status,
   species,
   location,
   id,
-}) {
-  const colors = {
-    Alive: "bg-green-500",
-    Dead: "bg-red-500",
-    unknown: "bg-gray-500",
-  };
+}) => {
+  const { colors } = useSingleCharacter();
 
   return (
     <Link className="text-white flex container mx-auto" to={`/character/${id}`}>
@@ -38,4 +46,6 @@ export default function SingleCharacter({
       </div>
     </Link>
   );
-}
+};
+
+export default SingleCharacter;
