@@ -11,4 +11,5 @@ export type SingleCharacterType = {
   species: string;
   location: { name: string; url: string };
   id: number;
+  origin: { name: string };
 };

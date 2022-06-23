@@ -4,7 +4,7 @@ export type CharacterDataType = {
   colors: { [key in CharacterStatusEnum]: string };
 };
 
-export default function useSingleCharacter(): CharacterDataType {
+const useSingleCharacter = (): CharacterDataType => {
   const colors = {
     [CharacterStatusEnum.ALIVE]: "bg-green-500",
     [CharacterStatusEnum.DEAD]: "bg-red-500",
@@ -14,4 +14,6 @@ export default function useSingleCharacter(): CharacterDataType {
   return {
     colors,
   };
-}
+};
+
+export default useSingleCharacter;

@@ -6,7 +6,7 @@ import SingleCharacter from "../../components/SingleCharacter/SingleCharacter";
 // LOGIC:
 import useCharacters from "./useCharacters";
 
-export default function Characters() {
+const Characters = () => {
   const { info, characters, charactersStatus, page, setPage } = useCharacters();
 
   return (
@@ -21,4 +21,6 @@ export default function Characters() {
       <Pagination page={page} setPage={setPage} maxPage={info?.pages} />
     </div>
   );
-}
+};
+
+export default Characters;

@@ -3,14 +3,12 @@ import { useParams } from "react-router-dom";
 import AsyncWrapper from "../../hoc/AsyncList/AsyncList";
 import useSingleCharacter from "../../components/SingleCharacter/useSingleCharacter";
 
-export default function SingleCharacterRoute() {
+const SingleCharacterRoute = () => {
   const { id } = useParams();
   const { singleCharacter, singleCharacterStatus } =
     useSingleCharacterRoute(id);
 
-  // name, status, species, origin.name, location.name, image
-
-  const { colors } = useSingleCharacter;
+  const { colors } = useSingleCharacter();
 
   return (
     <AsyncWrapper status={singleCharacterStatus}>
@@ -33,7 +31,7 @@ export default function SingleCharacterRoute() {
                 Status:
                 <span
                   className={`w-2 h-2 rounded-xl ${
-                    colors[singleCharacter?.status]
+                    colors[singleCharacter ? singleCharacter.status : "Alive"]
                   } inline-block mx-1`}
                 ></span>
                 {singleCharacter?.status}
@@ -55,4 +53,6 @@ export default function SingleCharacterRoute() {
       </div>
     </AsyncWrapper>
   );
-}
+};
+
+export default SingleCharacterRoute;

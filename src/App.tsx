@@ -1,23 +1,21 @@
-import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter } from "react-router-dom";
 import Header from "./components/Header/Header";
+import ReactQueryProvider from "./components/Providers/ReactQueryProvider";
 
 // COMPONENTS:
 import Routes from "./containers/Routes";
 
-const queryClient = new QueryClient();
-
-function App() {
+const App = () => {
   return (
     <div className="App bg-gray-450 min-h-screen">
       <BrowserRouter>
-        <QueryClientProvider client={queryClient}>
+        <ReactQueryProvider>
           <Header />
           <Routes />
-        </QueryClientProvider>
+        </ReactQueryProvider>
       </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;

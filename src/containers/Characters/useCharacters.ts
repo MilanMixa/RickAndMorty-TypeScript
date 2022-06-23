@@ -10,7 +10,7 @@ export type InfoTypes = {
   prev: null | number;
 };
 
-export type Testing = {
+export type DataTypes = {
   info: InfoTypes | null;
   results: SingleCharacterType[];
 };
@@ -23,12 +23,13 @@ export type CharacterDataType = {
   setPage: Dispatch<SetStateAction<number>>;
 };
 
-export default function useCharacters(): CharacterDataType {
+const useCharacters = (): CharacterDataType => {
   const [page, setPage] = useState(1);
 
-  const fetchCharacters: QueryFunction<Testing, (string | number)[]> = async ({
-    queryKey,
-  }) => {
+  const fetchCharacters: QueryFunction<
+    DataTypes,
+    (string | number)[]
+  > = async ({ queryKey }) => {
     const { data } = await getCharactersAPI(queryKey[1] as number);
 
     return data;
@@ -52,4 +53,6 @@ export default function useCharacters(): CharacterDataType {
     page,
     setPage,
   };
-}
+};
+
+export default useCharacters;
